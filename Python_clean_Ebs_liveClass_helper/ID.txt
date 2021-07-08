@@ -1,0 +1,9 @@
+FINE
+honggildong11
+bee-mill-burn-ho!
+
+---이줄 포함 이하는 프로그렘 실행에 영향을 주지 않습니다 (설명용)---
+
+FINE <-반드시 첫줄에 둘것
+honggildong11 <- 아이디(반드시 두번째 줄)
+bee-mill-burn-ho! <-비번(반드시 세번째 줄)
