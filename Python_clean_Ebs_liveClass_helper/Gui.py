@@ -14,7 +14,6 @@ chromedriver_autoinstaller.install(True)
 driver = webdriver.Chrome()
 main = Python_clean_Ebs_liveClass_helper.MAIN_WORK_PLACE(driver, root)
 
-root.iconbitmap('MO-supp-E.ico')
 root.title("라이브 수업 대기 장치 ver3.3")
 root.geometry("300x100")
 root.resizable(False, False)
