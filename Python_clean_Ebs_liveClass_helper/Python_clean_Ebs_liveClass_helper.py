@@ -109,6 +109,13 @@ class MAIN_WORK_PLACE:
             Up = '#page > div.page_classmain > div:nth-child(1) > div:nth-child(2) > div > ul > li:nth-child('+str(live_Up.paragraph)+') > a'
             Look_UP = '#page > div.bg_main_tit > div > div.fr > div > a.btn.btn_md.btn.btn_keycolor'
     
+            print("온클 라이브 일정을 탐색하는중....")
+
+            if live_Up.Check_live_class_Tab() == True:
+                break
+            elif self.task_kill == True:
+                return 0
+            live_Up.finder(Up)
 
             print("화상수업 안내를 탐색하는중....")
 
@@ -118,16 +125,6 @@ class MAIN_WORK_PLACE:
                 return 0
             live_Down.finder(Down)
             # print(live_Down.paragraph)
-    
-            print("온클 라이브 일정을 탐색하는중....")
-
-            if live_Up.Check_live_class_Tab() == True:
-                break
-            elif self.task_kill == True:
-                return 0
-            live_Up.finder(Up)
-            
-            
 
         #    print("종례를 탐색하는중....")
         #    if live_Down.Check_live_class_Tab() == True:

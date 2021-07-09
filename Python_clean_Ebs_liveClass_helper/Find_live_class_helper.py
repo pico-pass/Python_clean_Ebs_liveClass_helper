@@ -59,17 +59,27 @@ class Live:
         Args:
             만약 url 창에 meeting이라는 단어가 감지되면 True를 그게 아니라면 False를 리턴합니다.
             수업이 끝나면 https://ebs3-meeting.dooray.com/onclass/thank-you라는 주소로 가게 되는데
-            수업이 끝난 창은 이를 이용하여 구분을 할수있도록 url.find('thank-you') == '-1'를 사용하였습니다
+            수업이 끝난 창은 이를 이용하여 구분을 할수있도록 url.find('thank-you')를 사용하여 탭을 닫아 탐색 속도를 향상시킵니다.
         """
         Stop = False
+        close_tab = []
 
         for i in range(0, len(self.driver.window_handles)):
             self.alert_pass()
             self.driver.switch_to.window(self.driver.window_handles[i])
             self.driver.implicitly_wait(5)
             url = self.driver.current_url
-            if (url.find('meeting') > 0) and (str(url.find('thank-you')) == '-1'):
+            if url.find('thank-you') > 0:
+                close_tab.append(i)
+            elif (url.find('meeting') > 0):
                 Stop = True
+        
+        close_tab.reverse() #탭을 뒤에서 부터 닫음(list out of range err 방지용)
+        
+        for i in close_tab:
+            self.driver.switch_to.window(self.driver.window_handles[i])
+            self.driver.close()
+
                 
         if Stop == False:
             self.driver.switch_to.window(self.driver.window_handles[0])
